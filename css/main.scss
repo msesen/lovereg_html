@@ -1,0 +1,393 @@
+// COLOURS
+$violet: #3e3159; // rgb(62, 49, 89)
+$rose: #f61662; // rgb(246, 22, 98)
+$pink: #fa8ab1; // rgb(250, 138, 177)
+$lilac: #dec9ed; // rgb(222, 201, 237)
+$cream: #f2edeb; // rgb(242, 237, 235)
+$snow: #f5f5f5; // rgb(245, 245, 245)
+
+// FONTS
+@font-face {
+    font-family: 'Inter';
+    src:  url('../fonts/Inter-VariableFont.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Bitter';
+    src:  url('../fonts/Bitter-VariableFont.ttf') format('truetype');
+}
+$baseFont: 'Inter';
+$baseFontFallback: 'sans-serif';
+$baseFontFamily: $baseFont, $baseFontFallback;
+$headingFont: 'Bitter';
+$headingFontFallback: 'sans-serif';
+$headingFontFamily: $headingFont, $headingFontFallback;
+
+/************* OVERRIDE BOOTSTRAP ***************/
+
+// These must be declared before importing any bootstrap files
+// Colours
+$primary: $violet; 
+$secondary: $rose;
+
+// Font
+$font-family-sans-serif: $baseFontFamily;
+$headings-font-family: $headingFontFamily;
+$headings-color: $primary;
+
+// Navbar
+$navbar-light-active-color: $rose;
+$badge-font-size: 0.45em;
+
+// Gutters
+$grid-gutter-width: 2rem;
+
+// Accordion
+$accordion-button-active-bg: $snow;
+$accordion-border-color: $snow;
+$accordion-button-focus-border-color: $snow;
+$accordion-button-focus-box-shadow: none;
+.accordion-button:hover { background-color: $snow; }
+// .accordion-body { background-color: $snow; }
+
+// Import the bootstrap functions & variables.
+// "Functions" must be imported before "variables".
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+// Define new theme colours we want to add so we can use in
+// bootstrap e.g. 'bg-altlight'
+$custom-theme-colors: (
+    'altlight': $cream,
+    'altdark': $lilac
+);
+
+// Add new theme colours to the existing boostrap theme colours
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// import raw bootstrap sass files. This should come last so 
+// the above declared variables will be used.
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Additional style overrides
+.btn {
+    border: none;
+}
+.btn-secondary {
+    color: $snow;
+}
+.btn-primary:hover {
+    background-color: $rose;
+}
+.btn-secondary:hover {
+    background-color: $primary;
+    color: $snow;
+}
+.btn-primary.cta {
+    border-radius: initial;
+    box-shadow: 2px 2px $pink;
+}
+.btn-primary.cta:hover {
+    box-shadow: 2px 2px $violet;
+    transition: box-shadow .2s ease-in-out;
+}
+
+/************* OVERRIDE BOOTSTRAP END ***************/
+
+// RULES
+// .bg-overlay {
+//     background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: center center;
+//     color: #fff;
+//     height: 450px;
+//     padding-top: 50px;
+// }
+
+p {
+    color: $violet;
+}
+h1.mega {
+    font-size: 3em;
+    margin: 0;
+}
+
+.top-bar {
+    padding: 1rem;
+    padding: 1rem;
+    background-color: #322747; // #f5f5f5;
+    color: $cream;
+    font-size: 1.4em;
+    border-bottom: 1px solid $snow;
+}
+header {
+    background-color: white;
+    top: -1px!important;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+// Navbar
+.navbar-nav .nav-link {
+    color: $primary;
+    font-size: 1.2em;
+}
+
+.navbar-nav .nav-link:hover {
+    color: $secondary;
+    transition: .2s color ease-in-out;
+}
+
+.hero {
+    // background-image: url(../images/hero-img-lg-up.png);
+    // background: linear-gradient(rgba(242, 237, 235, .6), rgba(242, 237, 235, .3)), url(../images/hero-img-lg-up.png);
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position-x: 100%;
+
+    .left, .right {
+        display: flex;
+        align-items: center;
+        // height: 600px;
+    }
+    .right {
+        background-color: $cream;
+    }
+    &__tagline {
+        text-align: center;
+        h2 {
+            // color: $snow;
+            margin-bottom: 0;
+            span {
+                font-weight: bold;
+                display: inline-block;
+                font-size: 1.6em;
+                text-shadow: -7px 4px 0 $pink;
+            }
+        }
+    }
+}
+.hero-footer {
+    background-color: $violet;
+    color: $snow;
+    &__item {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        margin-left: 12%;
+        img {
+            margin-right: 1rem;
+        }
+        span {
+            font-size: 0.9em;
+        }
+    }
+    h6 {
+        color: $snow;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+}
+
+.what-is-a-love-deed, .products-section, .hiw-section, .bm-section, .pah-section, .ao-section, .scan-section, .control-section {
+    h1 { font-weight: bold; }
+}
+.what-is-a-love-deed, .products-section, .hiw-section, .bm-section, .pah-section, .ao-section, .scan-section, .control-section, footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.page-heading-strip {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.what-is-a-love-deed {
+    background-color: #f5f5f5;
+}
+
+// Products section - homepage
+.products-section {
+    &__product {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 0;
+        border-radius: 1rem;
+        border: 2px solid $cream;
+        &__meta {
+            text-align: center;
+            &__name {
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}
+
+// How it works section - homepage
+.hiw-section {
+    position: relative;
+    &__bg {
+        position: absolute;
+        z-index: -99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $lilac;
+    }
+    &__text {
+        text-align: center;
+    }
+    &__card {
+        position: relative;
+        background-color: white;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        min-height: 410px;
+        &__number {
+            display: flex;
+            justify-content: center;
+            & > div {
+                position: absolute;
+                top: -37px;
+                background-color: white;
+                width: 84px;
+                height: 85px;
+                border-radius: 50%;
+                border: solid 1px white;
+                display: flex;
+                justify-content: center;
+            }
+            span {
+                line-height: 64px;
+                border-radius: 50%;
+                border: solid 2px #3e3159;
+                color: #3e3159;
+                text-align: center;
+                display: block;
+                font-size: 2em;
+                font-weight: bold;
+                width: 64px;
+                height: 64px;
+                position: relative;
+                top: 9px;
+            }
+        }
+        &__body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-top: 4rem;
+            }
+            span, img {
+                margin-bottom: 2rem;
+            }
+            p {
+                text-align: justify;
+            }
+        }
+    }
+}
+
+// Beautiful section - homepage
+.bm-section {
+    background-color: $violet;
+    h1 {
+        color: $snow;
+        span {
+            color: $pink;
+        }
+    }
+}
+
+// All accosions section
+.ao-section {
+    background-color: $snow;
+}
+
+// Full control section - homepage
+.control-section {
+    background-color: #EEEEEE;
+
+    &__card {
+
+        &__body {
+            margin-top: 1rem;
+            h5, p {
+                margin-top: 2rem;
+            }
+            h5 { 
+                font-weight: bold; 
+            }
+            p { 
+                text-align: justify;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+footer {
+    background-color: $violet;
+    h5 {
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+    h5, ul li a {
+        color: $lilac;
+        text-decoration: none;
+    }
+    ul {
+        padding: 0;
+        list-style-type: none;
+        line-height: 2.5rem;
+    }
+    a:hover {
+        color: $cream;
+    }
+}
+.footer-strip {
+    background-color: #322747;
+    color: $lilac;
+}
+
+
+// FAQ Page
+.page-heading-strip {
+    background-color: $violet;
+    margin-bottom: 2rem;
+    h1 { color: $snow; }
+}
+
+
+
+// BREAKPOINTS -------------------------------------------
+
+@include media-breakpoint-up(sm) {
+    .hiw-section__bg {
+        height: 50%;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .hero {
+        background-color: $cream;
+        // img { display: none; }
+        // img.d-lg-up {
+        //     max-width: 100%;
+        //     display: block;
+        // }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    h1.mega {
+        font-size: 3em;
+    }
+}
